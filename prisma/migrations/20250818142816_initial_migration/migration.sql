@@ -11,7 +11,7 @@ CREATE TABLE "public"."Scenario" (
 -- CreateTable
 CREATE TABLE "public"."Option" (
     "id" TEXT NOT NULL,
-    "neme" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
     "description" TEXT,
     "scenarioId" TEXT NOT NULL,
 

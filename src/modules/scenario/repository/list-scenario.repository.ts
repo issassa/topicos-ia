@@ -6,7 +6,7 @@ export class ListScenarioRepository {
     constructor(private readonly prisma: PrismaService) {}
 
     async list () {
-        const scenario = await this.prisma.scenario.findMany
+        const scenario = await this.prisma.scenario.findMany({})
         return scenario;
     }
 }
