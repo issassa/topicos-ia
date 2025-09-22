@@ -17,7 +17,7 @@ model Scenario {
 
 model Option {
     id String @id@default(uuid())
-    neme String
+    name String
     description String?
     scenarioId String
     scenario Scenario @relation(fields: [scenarioId], references: [id])
