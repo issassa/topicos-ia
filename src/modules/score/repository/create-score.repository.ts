@@ -7,7 +7,7 @@ export class CreateScoreRepository {
     constructor(private readonly prisma: PrismaService) {}
 
     async create (data: CreateScoreDto) {
-        const score = await this.prisma.scenario.create({ data });
+        const score = await this.prisma.score.create({ data });
         return score;
     }
 }

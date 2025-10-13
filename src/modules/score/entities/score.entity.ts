@@ -1,1 +1,1 @@
-export class Scenario {}
+export class Score {}

@@ -5,7 +5,7 @@ import { UpdateScoreDto } from './dto/update-score.dto';
 
 @Controller('Score')
 export class ScoreController {
-  constructor(private readonly ScoreService: ScoreService) {}
+  constructor(private readonly scoreService: ScoreService) {}
 
   @Post()
   create(@Body() createScoreDto: CreateScoreDto) {
@@ -14,7 +14,7 @@ export class ScoreController {
 
   @Get()
   findAll() {
-    return this.ScoreService.findAll();
+    return this.scoreService.findAll();
   }
 
   @Get(':id')
