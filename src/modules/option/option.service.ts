@@ -15,8 +15,8 @@ export class OptionService {
     private readonly findoneOptionUseCase: FindOneOptionUseCase) 
     {}
 
-  create(data: CreateOptionDto) {
-    return this.createOptionUseCase.execute(data);
+  create(scenarioId: string, data: CreateOptionDto) {
+    return this.createOptionUseCase.execute(scenarioId, data);
   }
 
   findAll() {

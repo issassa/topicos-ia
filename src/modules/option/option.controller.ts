@@ -2,14 +2,19 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { OptionService } from './option.service';
 import { CreateOptionDto } from './dto/create-option.dto'; 
 import { UpdateOptionDto } from './dto/update-option.dto';
+import { ApiBody, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 
 @Controller('option')
 export class OptionController {
   constructor(private readonly optionService: OptionService) {}
 
-  @Post()
-  create(@Body() createOptionDto: CreateOptionDto) {
-    return this.optionService.create(createOptionDto);
+  @Post('scenarios/:scenarioId/options')
+ 
+  create(
+    @Param('scenarioId') scenarioId: string,
+    @Body() createOptionDto: CreateOptionDto,
+  ) {
+    return this.optionService.create(scenarioId, createOptionDto);
   }
 
   @Get()
@@ -21,7 +26,6 @@ export class OptionController {
   findOne(@Param('id') id: string) {
     return this.optionService.findOne(id);
   }
-
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateOptionDto: UpdateOptionDto) {
     return this.optionService.update(id, updateOptionDto);
