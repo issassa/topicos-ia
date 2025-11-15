@@ -7,36 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Scenario {
+model Genre {
   id String @id@default(uuid())
-  title String 
+  name String @unique
+  movies Movie[]
+  createdAt DateTime @default(now())
+}
+
+model Movie {
+  id String @id @default(uuid())
+  title String
   description String?
+  releaseYear Int?
+  isFavorite Boolean @default(false)
+  genreId String
+  genre Genre @relation(fields: [genreId], references: [id])
   createdAt DateTime @default(now())
-  options Option[]
-}
-
-model Option {
-    id String @id@default(uuid())
-    name String
-    description String?
-    scenarioId String
-    scenario Scenario @relation(fields: [scenarioId], references: [id])
-    scores Score[]
-}
-
-model Criterion {
-  id String @id@default(uuid())
-  name String 
-  weigth Float   //0...1 (soma dos pesos)
-  active Boolean @default(true)
-  createdAt DateTime @default(now())
-  scores Score[]
-}
-
-model Score {
-  id String @id@default(uuid())
-  optionId String
-  option Option @relation(fields: [optionId], references: [id])
-  criterionId String
-  criterion Criterion @relation(fields: [criterionId], references: [id])
 }
