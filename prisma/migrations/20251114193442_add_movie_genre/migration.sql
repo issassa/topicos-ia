@@ -20,5 +20,8 @@ CREATE TABLE "public"."Movie" (
     CONSTRAINT "Movie_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Genre_name_key" ON "public"."Genre"("name");
+
 -- AddForeignKey
 ALTER TABLE "public"."Movie" ADD CONSTRAINT "Movie_genreId_fkey" FOREIGN KEY ("genreId") REFERENCES "public"."Genre"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
